@@ -1,53 +1,77 @@
-# React + TypeScript + Vite
+# DustTrip 🚙
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+פלטפורמה לתיאום טיולי שטח בישראל - מחברת בין מובילי טיולים לבעלי רכבי שטח
 
-Currently, two official plugins are available:
+## תכונות עיקריות
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 **אימות משתמשים** - התחברות עם אימייל/סיסמה
+- 👤 **ניהול פרופיל** - פרטים אישיים ופרטי רכב מלאים
+- 🚗 **רישום רכבים** - מפרט טכני מפורט (מוגבה, נעילות, הילוך כוח, ממוגן)
+- 🗺️ **יצירת טיולים** - למובילים מאושרים בלבד
+- 📋 **הרשמה לטיולים** - בדיקה אוטומטית של התאמת רכב
+- 🔢 **ספירת משתתפים** - תצוגה בולטת של מקומות פנויים
+- 🎯 **סינון חכם** - לפי אזור ורמת קושי
 
-## React Compiler
+## טכנולוגיות
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React + TypeScript + Tailwind CSS + Vite
+- **Backend:** Supabase (PostgreSQL + Authentication + Realtime)
+- **PWA Ready:** מותאם למובייל ודסקטופ
 
-## Expanding the ESLint configuration
+## התקנה
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. שכפל את הפרויקט:
+```bash
+git clone https://github.com/YOUR_USERNAME/dusttrip.git
+cd dusttrip
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. התקן תלויות:
+```bash
+npm install
+```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
+3. הגדר משתני סביבה - צור קובץ `.env`:
+```
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+4. הרץ את מסד הנתונים:
+- היכנס ל-Supabase Dashboard
+- הרץ את `supabase-schema.sql` ב-SQL Editor
+
+5. הפעל את השרת:
+```bash
+npm run dev
+```
+
+## מבנה הפרויקט
+
+```
+src/
+├── pages/          # דפי המערכת
+│   ├── AuthPage.tsx          # התחברות/רישום
+│   ├── ProfileSetupPage.tsx  # השלמת פרופיל
+│   ├── ProfilePage.tsx       # עריכת פרופיל
+│   ├── HomePage.tsx          # רשימת טיולים
+│   └── CreateTripPage.tsx    # יצירת טיול (מובילים)
+├── types/          # TypeScript types
+├── lib/            # Supabase client
+└── App.tsx         # ניהול routing ו-auth state
+```
+
+## תרומה לפרויקט
+
+תרומות מתקבלות בברכה! פתח Pull Request או דווח על בעיות ב-Issues.
+
+## רישיון
+
+MIT License
+
+---
+
+**נבנה עם ❤️ לקהילת מטיילי השטח בישראל**
 import reactDom from 'eslint-plugin-react-dom'
 
 export default defineConfig([
